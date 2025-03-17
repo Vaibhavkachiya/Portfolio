@@ -1,44 +1,51 @@
 document.addEventListener("DOMContentLoaded", () => {
     const darkModeToggle = document.getElementById("dark-mode-toggle");
     const body = document.body;
-    const clock = document.getElementById("clock");
+    const links = document.querySelectorAll(".nav-link");
+    const indicator = document.querySelector(".scroll-indicator");
 
+     
     if (localStorage.getItem("theme") === "dark") {
         body.classList.add("dark-mode");
         darkModeToggle.textContent = "☀️";
-    } else {
-        body.classList.remove("dark-mode");
-        darkModeToggle.textContent = "🌗";
     }
 
     darkModeToggle.addEventListener("click", () => {
         body.classList.toggle("dark-mode");
-        if (body.classList.contains("dark-mode")) {
-            localStorage.setItem("theme", "dark");
-            darkModeToggle.textContent = "☀️";
-        } else {
-            localStorage.setItem("theme", "light");
-            darkModeToggle.textContent = "🌗";
-        }
+        localStorage.setItem("theme", body.classList.contains("dark-mode") ? "dark" : "light");
+        darkModeToggle.textContent = body.classList.contains("dark-mode") ? "☀️" : "🌗";
     });
 
-    const updateClock = () => {
+ 
+    const datetime = document.getElementById("datetime");
+    const updateDateTime = () => {
         const now = new Date();
-        const hours = now.getHours().toString().padStart(2, "0");
-        const minutes = now.getMinutes().toString().padStart(2, "0");
-        const seconds = now.getSeconds().toString().padStart(2, "0");
-        clock.textContent = `🕒 ${hours}:${minutes}:${seconds}`;
+        const date = now.toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        const time = now.toLocaleTimeString("en-US", { hour: '2-digit', minute: '2-digit' });
+        datetime.textContent = `📅 ${date} | ${time}`;
     };
-    setInterval(updateClock, 1000);
-    updateClock();
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
+ 
+    function updateIndicator() {
+        const active = document.querySelector(".nav-link.active");
+        if (active) {
+            indicator.style.width = active.offsetWidth + "px";
+            indicator.style.left = active.offsetLeft + "px";
+        }
+    }
 
-    gsap.from(".animated-title", { opacity: 0, y: 50, duration: 1, stagger: 0.2 });
-    document.querySelectorAll(".skill-bar span").forEach((bar) => {
-        const progress = bar.getAttribute("data-progress");
-        gsap.to(bar, {
-            width: `${progress}%`,
-            duration: 1.5,
-            ease: "power2.out",
+    window.addEventListener("scroll", () => {
+        let fromTop = window.scrollY + 100;
+        links.forEach(link => {
+            let section = document.querySelector(link.getAttribute("href"));
+            if (section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
+                links.forEach(l => l.classList.remove("active"));
+                link.classList.add("active");
+                updateIndicator();
+            }
         });
     });
+
+    updateIndicator();
 });
