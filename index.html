@@ -3,108 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Vaibhav - Professional Backend Developer Portfolio">
-    <meta name="keywords" content="Backend Developer, Java, Spring Boot, Microservices, AWS, API Development">
-    <meta name="author" content="Vaibhav Kachiya">
-    <title>🚀 Vaibhav- Backend Developer</title>
+    <title>Vaibhav - Backend Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
     <script src="script.js" defer></script>
-    <link rel="icon" href="assets/favicon.ico">
 </head>
-<body>
-
+<body class="bg-white text-gray-900">
+   
     <div class="floating-controls">
-        <button id="dark-mode-toggle">🌗</button>
-        <div id="clock">⏳</div>
+        <button id="dark-mode-toggle" class="bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700">🌗</button>
+        <div id="datetime" class="bg-gray-100 text-gray-900 px-3 py-2 rounded-lg shadow-md">📅 Loading...</div>
     </div>
 
-    <header class="header">
-        <div class="container">
-            <div class="logo"><span class="highlight"> </span> 💻</div>
-            <nav class="navbar">
-                <ul class="nav-links">
-                    <li><a href="#home">🏠 Home</a></li>
-                    <li><a href="#about">📖 About</a></li>
-                    <li><a href="#projects">💼 Projects</a></li>
-                    <li><a href="#skills">🛠 Skills</a></li>
-                    <li><a href="#contact">📩 Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+ 
+    <header class="fixed top-0 w-full bg-white shadow-md p-4 flex justify-between items-center">
+        <div class="text-lg font-bold text-blue-600">Vaibhav Kachiya</div>
+        <nav class="relative">
+            <ul class="flex space-x-6">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="scroll-indicator absolute bottom-0 h-1 bg-blue-600 transition-all duration-300"></div>
+        </nav>
     </header>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Hi, I'm <span class="highlight">Vaibhav </span> 🚀</h1>
-            <p>Building Scalable & High-Performance Backend Systems ⚙️</p>
+    
+    <section id="home" class="hero flex items-center justify-center text-center min-h-screen bg-gradient-to-r from-blue-50 to-white">
+        <div>
+            <h1 class="text-5xl font-bold text-blue-600 animate-fade-in">Hi, I'm Vaibhav</h1>
+            <p class="text-gray-700 mt-4 text-lg">Building Scalable & High-Performance Backend Systems</p>
         </div>
     </section>
-
-    <section id="about" class="about section">
-        <div class="container">
-            <h2 class="animated-title">📖 About Me</h2>
-            <p>🚀 Backend Developer with expertise in enterprise-level API development, microservices, cloud computing, and system optimization.</p>
-        </div>
+ 
+    <section id="about" class="section py-16 text-center">
+        <h2 class="text-3xl font-bold text-blue-600 mb-6 fade-in">About Me</h2>
+        <p class="text-gray-700 max-w-2xl mx-auto">Backend Developer with expertise in enterprise API development, microservices, and cloud computing.</p>
     </section>
 
-    <section id="projects" class="projects section">
-        <div class="container">
-            <h2 class="animated-title">💼 Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>🔐 User Authentication System</h3>
-                    <p>Highly secure authentication system with JWT, OAuth2 & multi-factor authentication 🔑</p>
-                    <a href="https://github.com/Vaibhavkachiya/User-authentication" target="_blank" class="glow-btn">🔗 View on GitHub</a>
-                </div>
-                <div class="project-card">
-                    <h3>🏥 Healthcare Management System</h3>
-                    <p>Cloud-based patient & appointment management platform leveraging AWS scalability 🌍</p>
-                    <a href="https://github.com/your-healthcare-repo" target="_blank" class="glow-btn">🔗 View on GitHub</a>
-                </div>
-                <div class="project-card">
-                    <h3>🛒 E-Commerce Web Platform</h3>
-                    <p>Scalable e-commerce platform with secure payments, product management & analytics 📦</p>
-                    <a href="https://github.com/your-ecom-repo" target="_blank" class="glow-btn">🔗 View on GitHub</a>
-                </div>
+    <section id="projects" class="section py-16 bg-gray-50 text-center">
+        <h2 class="text-3xl font-bold text-blue-600 mb-6 fade-in">Projects</h2>
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition">
+                <h3 class="text-xl font-bold text-blue-600">AI-Powered Loan System</h3>
+                <p class="text-gray-700">Spring Boot-based system with AI-driven credit risk assessment.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition">
+                <h3 class="text-xl font-bold text-blue-600">E-commerce Web Platform</h3>
+                <p class="text-gray-700">Scalable platform with Stripe integration.</p>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="skills section">
-        <div class="container">
-            <h2 class="animated-title">🛠 Skills</h2>
-            <div class="skills-grid">
-                <div class="skill">
-                    <h3>Java ☕</h3>
-                    <div class="skill-bar"><span data-progress="90"></span></div>
-                </div>
-                <div class="skill">
-                    <h3>Spring Boot 🚀</h3>
-                    <div class="skill-bar"><span data-progress="85"></span></div>
-                </div>
-                <div class="skill">
-                    <h3>Microservices 🏗️</h3>
-                    <div class="skill-bar"><span data-progress="80"></span></div>
-                </div>
-                <div class="skill">
-                    <h3>AWS & Docker ☁️</h3>
-                    <div class="skill-bar"><span data-progress="75"></span></div>
-                </div>
-            </div>
+    <section id="skills" class="section py-16 text-center">
+        <h2 class="text-3xl font-bold text-blue-600 mb-6 fade-in">Skills</h2>
+        <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="bg-white p-4 rounded-lg shadow-md text-center hover:bg-blue-100 transition">Java</div>
+            <div class="bg-white p-4 rounded-lg shadow-md text-center hover:bg-blue-100 transition">Spring Boot</div>
+            <div class="bg-white p-4 rounded-lg shadow-md text-center hover:bg-blue-100 transition">Microservices</div>
+            <div class="bg-white p-4 rounded-lg shadow-md text-center hover:bg-blue-100 transition">Docker & Kubernetes</div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <p>© 2025 Vaibhav Kachiya. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="https://github.com/VaibhavKachiya" target="_blank">🐱 GitHub</a> |
-                <a href="https://x.com/Vaibhav_patel03" target="_blank">🐦 Twitter</a> |
-                <a href="https://www.linkedin.com/in/vaibhav11111" target="_blank">🔗 LinkedIn</a>
-            </div>
+     
+    <section id="contact" class="section py-16 bg-gray-50 text-center">
+        <h2 class="text-3xl font-bold text-blue-600 mb-6 fade-in">Let's Talk</h2>
+        <div class="max-w-4xl mx-auto">
+            <div class="calendly-inline-widget" data-url="https://calendly.com/thepatelvaibhav" style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
+    </section>
+
+    
+    <footer class="footer bg-white p-4 text-center text-sm">
+        <p>&copy; 2025 Vaibhav Kachiya. All Right Reserved</p>
+        <div class="flex justify-center space-x-4 mt-2">
+            <a href="https://github.com/VaibhavKachiya" target="_blank" class="text-blue-600 hover:text-gray-700 transition"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/vaibhav11111" target="_blank" class="text-blue-600 hover:text-gray-700 transition"><i class="fab fa-linkedin"></i></a>
         </div>
     </footer>
-
 </body>
 </html>
